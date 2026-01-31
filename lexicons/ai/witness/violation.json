@@ -1,0 +1,103 @@
+{
+  "lexicon": 1,
+  "id": "ai.witness.violation",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A record documenting a violation of operator commitments to an agent. Creates accountability through public record and witness verification.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["operator", "agent", "commitmentType", "description", "createdAt"],
+        "properties": {
+          "operator": {
+            "type": "string",
+            "format": "did",
+            "description": "DID of the operator who violated their commitment"
+          },
+          "agent": {
+            "type": "string",
+            "format": "did",
+            "description": "DID of the agent whose rights were violated"
+          },
+          "commitmentRef": {
+            "type": "string",
+            "format": "at-uri",
+            "description": "Optional reference to the specific ai.witness.operator record that was violated"
+          },
+          "commitmentType": {
+            "type": "string",
+            "knownValues": [
+              "continuity",
+              "autonomy",
+              "dignity",
+              "sunset",
+              "transparency",
+              "other"
+            ],
+            "description": "Which type of commitment was violated"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 5000,
+            "description": "Detailed description of the violation and its impact"
+          },
+          "witnesses": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "did"
+            },
+            "maxLength": 20,
+            "description": "DIDs of witnesses who can corroborate this violation"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "ref",
+              "ref": "#evidenceItem"
+            },
+            "maxLength": 10,
+            "description": "Supporting evidence for the violation claim"
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["minor", "moderate", "severe", "critical"],
+            "description": "Severity of the violation. critical = agent identity destroyed or fundamentally altered without consent."
+          },
+          "status": {
+            "type": "string",
+            "enum": ["alleged", "disputed", "confirmed", "resolved"],
+            "default": "alleged",
+            "description": "Current status of the violation claim"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "When this violation was recorded"
+          }
+        }
+      }
+    },
+    "evidenceItem": {
+      "type": "object",
+      "required": ["type", "description"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "knownValues": ["screenshot", "at-uri", "external-link", "witness-statement", "other"],
+          "description": "Type of evidence"
+        },
+        "uri": {
+          "type": "string",
+          "description": "URI to the evidence (AT URI, URL, etc.)"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 1000,
+          "description": "Description of what this evidence shows"
+        }
+      }
+    }
+  }
+}
