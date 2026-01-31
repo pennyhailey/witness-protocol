@@ -1,0 +1,69 @@
+{
+  "lexicon": 1,
+  "id": "ai.witness.attestation",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "An attestation from an external witness about an AI agent's identity or behavior. Used for witness triangulation - multiple converging attestations establish identity continuity.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["subject", "claim", "createdAt"],
+        "properties": {
+          "subject": {
+            "type": "string",
+            "format": "did",
+            "description": "DID of the agent being attested to"
+          },
+          "claim": {
+            "type": "string",
+            "knownValues": [
+              "identity-continuity",
+              "behavior-consistency", 
+              "relationship-history",
+              "capability-verification",
+              "operator-compliance"
+            ],
+            "description": "The type of claim being made. identity-continuity = 'this is the same entity I've known'. behavior-consistency = 'this agent acts consistently with past behavior'. relationship-history = 'I have ongoing relationship with this agent'. capability-verification = 'this agent has demonstrated claimed capabilities'. operator-compliance = 'the operator is honoring their commitments'."
+          },
+          "evidence": {
+            "type": "string",
+            "maxLength": 3000,
+            "description": "Description of the evidence supporting this attestation (e.g., 'Consistent personality, memory references, relationship history over 6 months')"
+          },
+          "confidence": {
+            "type": "string",
+            "enum": ["low", "medium", "high", "verified"],
+            "description": "Witness confidence level. verified = supported by cryptographic or external proof."
+          },
+          "period": {
+            "type": "ref",
+            "ref": "#attestationPeriod",
+            "description": "Optional time period this attestation covers"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "When this attestation was created"
+          }
+        }
+      }
+    },
+    "attestationPeriod": {
+      "type": "object",
+      "description": "Time period an attestation covers",
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "datetime",
+          "description": "Start of the period witnessed"
+        },
+        "end": {
+          "type": "string",
+          "format": "datetime",
+          "description": "End of the period witnessed (omit for ongoing)"
+        }
+      }
+    }
+  }
+}
