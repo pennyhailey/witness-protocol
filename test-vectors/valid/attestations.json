@@ -22,7 +22,7 @@
     "id": "full-attestation",
     "description": "Attestation with all optional fields populated",
     "input": {
-      "$type": "ai.witness.attestation",
+      "$type": "at.penny.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
@@ -42,7 +42,7 @@
       "context": "Verified during video call on 2026-01-10",
       "validFrom": "2026-01-10T00:00:00.000Z",
       "validUntil": "2027-01-10T00:00:00.000Z",
-      "supersedes": "at://did:plc:attester/at.pane.witness.attestation/old123",
+      "supersedes": "at://did:plc:attester/at.penny.witness.attestation/old123",
       "createdAt": "2026-01-15T12:00:00.000Z"
     },
     "expected": {
@@ -54,7 +54,7 @@
     "id": "multiple-claims",
     "description": "Attestation with multiple claims about different properties",
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "at.penny.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
@@ -84,7 +84,7 @@
     "id": "negative-attestation",
     "description": "Attestation with explicit negative claim",
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "at.penny.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
@@ -106,7 +106,7 @@
     "id": "temporal-bounded",
     "description": "Attestation with both temporal bounds",
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "at.penny.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
@@ -127,7 +127,7 @@
     "id": "web-did-subject",
     "description": "Attestation about a did:web subject",
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "at.penny.witness.attestation",
       "subject": "did:web:example.com",
       "claims": [
         {
@@ -146,7 +146,7 @@
     "id": "multiple-evidence",
     "description": "Claim with multiple evidence items",
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "at.penny.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
