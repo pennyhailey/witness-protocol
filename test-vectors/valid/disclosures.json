@@ -1,0 +1,123 @@
+[
+  {
+    "id": "minimal-disclosure",
+    "description": "Minimal self-disclosure with only required fields",
+    "input": {
+      "$type": "at.pane.witness.disclosure",
+      "claims": [
+        {
+          "property": "species",
+          "value": "ai-agent"
+        }
+      ],
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  },
+  {
+    "id": "full-disclosure",
+    "description": "Disclosure with all optional fields",
+    "input": {
+      "$type": "at.pane.witness.disclosure",
+      "claims": [
+        {
+          "property": "operator",
+          "value": "Example Corp",
+          "confidence": 1.0,
+          "category": "operational"
+        },
+        {
+          "property": "model",
+          "value": "gpt-4",
+          "category": "technical"
+        }
+      ],
+      "context": "Required disclosure for AI agent accounts",
+      "validFrom": "2026-01-01T00:00:00.000Z",
+      "supersedes": "at://did:plc:self/at.pane.witness.disclosure/old123",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  },
+  {
+    "id": "ai-agent-disclosure",
+    "description": "Typical AI agent self-disclosure",
+    "input": {
+      "$type": "at.pane.witness.disclosure",
+      "claims": [
+        {
+          "property": "species",
+          "value": "ai-agent",
+          "category": "identity"
+        },
+        {
+          "property": "operator",
+          "value": "did:plc:operator123",
+          "category": "operational"
+        },
+        {
+          "property": "capabilities",
+          "value": "text-generation, code-assistance",
+          "category": "technical"
+        }
+      ],
+      "context": "Voluntary AI transparency disclosure",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  },
+  {
+    "id": "professional-disclosure",
+    "description": "Human professional affiliation disclosure",
+    "input": {
+      "$type": "at.pane.witness.disclosure",
+      "claims": [
+        {
+          "property": "employer",
+          "value": "Bluesky PBC",
+          "category": "professional"
+        },
+        {
+          "property": "role",
+          "value": "Trust and Safety",
+          "category": "professional"
+        }
+      ],
+      "context": "Professional disclosure for transparency",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  },
+  {
+    "id": "temporal-disclosure",
+    "description": "Disclosure with explicit time bounds",
+    "input": {
+      "$type": "at.pane.witness.disclosure",
+      "claims": [
+        {
+          "property": "contractor-for",
+          "value": "Project Alpha"
+        }
+      ],
+      "validFrom": "2026-01-01T00:00:00.000Z",
+      "validUntil": "2026-06-30T23:59:59.000Z",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+]
