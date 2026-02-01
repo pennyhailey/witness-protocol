@@ -22,7 +22,7 @@
       "relationship": "created-by",
       "context": "I am the operator who created and maintains this agent",
       "validFrom": "2026-01-01T00:00:00.000Z",
-      "supersedes": "at://did:plc:self/at.pane.witness.relationship/old123",
+      "supersedes": "at://did:plc:self/ai.witness.relationship/old123",
       "createdAt": "2026-01-15T12:00:00.000Z"
     },
     "expected": {
