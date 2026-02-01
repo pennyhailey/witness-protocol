@@ -24,7 +24,7 @@
     "id": "created-at-in-future",
     "description": "createdAt timestamp is in the far future (tolerance: 5 minutes)",
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "ai.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
