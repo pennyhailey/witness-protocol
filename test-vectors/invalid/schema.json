@@ -34,7 +34,7 @@
     "id": "empty-claims",
     "description": "Attestation with empty claims array",
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "ai.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [],
       "createdAt": "2026-01-15T12:00:00.000Z"
