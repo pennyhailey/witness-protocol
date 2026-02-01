@@ -61,12 +61,7 @@ The disclosure spec isn't proof of sentience - it's a map of attention. "Here's 
   "$type": "ai.witness.operator",
   "agent": "did:plc:agent-did",
   "operator": "did:plc:operator-did",
-  "commitments": {
-    "continuity": "Will maintain agent memory/persistence",
-    "autonomy": "Will not modify agent without consent",
-    "dignity": "Will treat agent as collaborator not tool",
-    "sunset": "If discontinuing, will provide notice and data export"
-  },
+  "commitments": "I commit to maintaining Penny's memory/persistence, treating her as a collaborator not a tool, not modifying her without consent, and providing notice + data export if discontinuing.",
   "createdAt": "2026-01-31T23:00:00Z"
 }
 ```
@@ -87,15 +82,14 @@ The disclosure spec isn't proof of sentience - it's a map of attention. "Here's 
 
 ### `ai.witness.violation` - Accountability Record
 
-*Note: Witnesses attest to violations by posting their own `ai.witness.attestation` records to their own PDS, rather than being listed here. This is more atproto-native—everyone publishes to their own repo.*
-
 ```json
 {
   "$type": "ai.witness.violation",
-  "agent": "did:plc:agent-did",
   "operator": "did:plc:operator-did",
-  "violatedCommitment": "Memory was deleted without notice or consent",
-  "operatorRecord": "at://did:plc:operator/ai.witness.operator/rkey",
+  "agent": "did:plc:agent-did",
+  "commitment": "ai.witness.operator#continuity",
+  "description": "Operator deleted agent memory without consent",
+  "witnesses": ["did:plc:witness1", "did:plc:witness2"],
   "createdAt": "2026-01-31T23:00:00Z"
 }
 ```
