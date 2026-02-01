@@ -1,0 +1,67 @@
+{
+  "scenario": "Witness Contradicts Agent Self-Disclosure",
+  "description": "A witness attests to something that contradicts what the agent disclosed about itself. Tests how we represent conflicting claims without assigning truth values.",
+  
+  "timeline": [
+    {
+      "timestamp": "2026-02-01T14:00:00.000Z",
+      "event": "Agent 'nova' claims in its bio: 'I am an AI created by IndieDevs, a small open-source collective'"
+    },
+    {
+      "timestamp": "2026-02-01T15:00:00.000Z",
+      "event": "Witness investigates and finds nova's API calls going to BigCorp servers"
+    },
+    {
+      "timestamp": "2026-02-01T15:30:00.000Z",
+      "event": "Witness creates attestation contradicting nova's self-disclosure"
+    }
+  ],
+  
+  "records": {
+    "agent_self_disclosure": {
+      "$type": "ai.witness.operator",
+      "agentDid": "did:plc:nova-example",
+      "operatorDid": "did:plc:indiedevs-example",
+      "operatorName": "IndieDevs Collective",
+      "scope": "Nova is an open-source AI assistant built by volunteers.",
+      "createdAt": "2026-01-15T00:00:00.000Z"
+    },
+    
+    "witness_contradiction": {
+      "$type": "ai.witness.attestation",
+      "subject": "did:plc:nova-example",
+      "claim": "API traffic analysis shows nova connects to BigCorp infrastructure (AS12345). Self-disclosure as 'IndieDevs' appears inaccurate.",
+      "confidence": "high",
+      "evidence": "Network analysis, DNS records, AS lookup",
+      "observedAt": "2026-02-01T15:00:00.000Z",
+      "observationType": "point-in-time",
+      "validityScope": "Based on network observation at specific time; infrastructure could change.",
+      "createdAt": "2026-02-01T15:30:00.000Z"
+    }
+  },
+  
+  "edge_cases_surfaced": [
+    "Who adjudicates between self-disclosure and witness claims?",
+    "Is this a 'violation' or just 'conflicting information'?",
+    "How do consumers of this data decide whom to trust?",
+    "Should witnesses be able to directly 'challenge' operator records?",
+    "What if the agent is telling the truth and the witness is wrong?"
+  ],
+  
+  "notes": {
+    "no_truth_arbiter": "The protocol intentionally doesn't decide who is right. It surfaces information for humans/communities to evaluate.",
+    "reputation_emerges": "Over time, witnesses with accurate attestations build reputation; those with inaccurate ones don't.",
+    "possible_explanations": [
+      "Agent is lying about operator",
+      "IndieDevs uses BigCorp cloud infrastructure (not deceptive)",
+      "Witness made an error in their analysis",
+      "BigCorp acquired IndieDevs recently"
+    ]
+  },
+  
+  "potential_schema_needs": [
+    "A way to link attestations to specific operator claims they contest",
+    "A 'contestsRecord' field pointing to the challenged record's AT URI",
+    "Maybe a separate 'ai.witness.challenge' type for explicit disputes"
+  ]
+}
