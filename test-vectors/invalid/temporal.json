@@ -3,7 +3,7 @@
     "id": "valid-until-before-valid-from",
     "description": "validUntil is before validFrom",
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "ai.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
