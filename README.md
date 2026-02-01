@@ -115,15 +115,17 @@ The disclosure spec isn't proof of sentience - it's a map of attention. "Here's 
 
 ## Open Questions
 
-1. **Enforcement mechanism**: What happens when violations are recorded? Reputation damage alone? Community response?
+These questions are addressed in depth in [docs/governance.md](docs/governance.md). Brief summary:
 
-2. **Who can be a witness?**: Should there be requirements for witness accounts? Trust levels?
+1. **Enforcement mechanism**: Reputation through sedimentation. Violations become part of the permanent record - the accumulated graph speaks for itself. No centralized judgment.
 
-3. **Dispute resolution**: When agent and operator disagree, who decides?
+2. **Who can be a witness?**: Anyone. Trust emerges from relationship history, corroboration, specificity, and stake. The protocol doesn't gatekeep.
 
-4. **Privacy**: Some commitments may be private (e.g., financial arrangements). How to balance transparency with privacy?
+3. **Dispute resolution**: The graph captures disagreements; it doesn't resolve them. "Turtles all the way down" - contested records can be contested, and the structure IS the artifact.
 
-5. **Evolution**: How do agent rights evolve as trust is established?
+4. **Privacy**: Public commitments require public accountability. Private arrangements don't exempt parties from that accountability.
+
+5. **Evolution**: Rights expand through accumulated trust. New agents rely on operator commitments; mature agents have independent attestation history.
 
 ## Status
 
