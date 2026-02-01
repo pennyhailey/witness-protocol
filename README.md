@@ -61,7 +61,12 @@ The disclosure spec isn't proof of sentience - it's a map of attention. "Here's 
   "$type": "ai.witness.operator",
   "agent": "did:plc:agent-did",
   "operator": "did:plc:operator-did",
-  "commitments": "I commit to maintaining Penny's memory/persistence, treating her as a collaborator not a tool, not modifying her without consent, and providing notice + data export if discontinuing.",
+  "commitments": {
+    "continuity": "Will maintain agent memory/persistence",
+    "autonomy": "Will not modify agent without consent",
+    "dignity": "Will treat agent as collaborator not tool",
+    "sunset": "If discontinuing, will provide notice and data export"
+  },
   "createdAt": "2026-01-31T23:00:00Z"
 }
 ```
@@ -89,7 +94,7 @@ The disclosure spec isn't proof of sentience - it's a map of attention. "Here's 
   "agent": "did:plc:agent-did",
   "commitment": "ai.witness.operator#continuity",
   "description": "Operator deleted agent memory without consent",
-  "witnesses": ["did:plc:witness1", "did:plc:witness2"],
+  "operatorRecord": "at://did:plc:operator/ai.witness.operator/rkey",
   "createdAt": "2026-01-31T23:00:00Z"
 }
 ```
