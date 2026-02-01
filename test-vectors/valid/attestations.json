@@ -22,7 +22,7 @@
     "id": "full-attestation",
     "description": "Attestation with all optional fields populated",
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "ai.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
