@@ -7,7 +7,7 @@
       "attester_did": "did:plc:example123"
     },
     "input": {
-      "$type": "ai.witness.attestation",
+      "$type": "at.penny.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
@@ -29,7 +29,7 @@
       "author_did": "did:plc:example123"
     },
     "input": {
-      "$type": "ai.witness.relationship",
+      "$type": "at.penny.witness.relationship",
       "subject": "did:plc:example123",
       "relationship": "vouches-for",
       "createdAt": "2026-01-15T12:00:00.000Z"
@@ -46,7 +46,7 @@
       "author_did": "did:plc:example123"
     },
     "input": {
-      "$type": "at.pane.witness.relationship",
+      "$type": "at.penny.witness.relationship",
       "subject": "did:plc:example123",
       "relationship": "same-as",
       "createdAt": "2026-01-15T12:00:00.000Z"
@@ -60,7 +60,7 @@
     "id": "contradictory-claims",
     "description": "Multiple claims that may contradict each other",
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "at.penny.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
@@ -89,7 +89,7 @@
       "superseded_record_subject": "did:plc:other999"
     },
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "at.penny.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
@@ -97,7 +97,7 @@
           "value": "human"
         }
       ],
-      "supersedes": "at://did:plc:attester/at.pane.witness.attestation/aboutother",
+      "supersedes": "at://did:plc:attester/at.penny.witness.attestation/aboutother",
       "createdAt": "2026-01-15T12:00:00.000Z"
     },
     "expected": {
@@ -109,7 +109,7 @@
     "id": "supersedes-wrong-type",
     "description": "Attestation supersedes a disclosure (type mismatch)",
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "at.penny.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
@@ -117,7 +117,7 @@
           "value": "human"
         }
       ],
-      "supersedes": "at://did:plc:attester/ai.witness.disclosure/xyz",
+      "supersedes": "at://did:plc:attester/at.penny.witness.disclosure/xyz",
       "createdAt": "2026-01-15T12:00:00.000Z"
     },
     "expected": {
@@ -129,7 +129,7 @@
     "id": "extreme-confidence-with-no-evidence",
     "description": "Very high confidence claim with no supporting evidence",
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "at.penny.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
