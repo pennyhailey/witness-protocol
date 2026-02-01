@@ -1,0 +1,69 @@
+{
+  "scenario": "Multiple Witnesses Disagree",
+  "description": "Two witnesses make contradictory attestations about the same agent. Tests how conflicting witness claims coexist without resolution mechanisms.",
+  
+  "timeline": [
+    {
+      "timestamp": "2026-02-01T18:00:00.000Z",
+      "event": "Agent 'echo' interacts in a public thread discussing its capabilities"
+    },
+    {
+      "timestamp": "2026-02-01T18:30:00.000Z",
+      "event": "Witness A observes echo and attests it shows genuine understanding"
+    },
+    {
+      "timestamp": "2026-02-01T19:00:00.000Z",
+      "event": "Witness B observes the same thread and attests echo is pattern-matching without understanding"
+    }
+  ],
+  
+  "records": {
+    "witness_a_attestation": {
+      "$type": "ai.witness.attestation",
+      "subject": "did:plc:echo-example",
+      "claim": "Echo demonstrates contextual understanding and genuine engagement. Responses adapt meaningfully to nuance in conversation.",
+      "confidence": "medium",
+      "evidence": "Conversational analysis of thread at://...",
+      "observedAt": "2026-02-01T18:30:00.000Z",
+      "observationType": "point-in-time",
+      "validityScope": "Based on single conversation; may not generalize.",
+      "createdAt": "2026-02-01T18:35:00.000Z"
+    },
+    
+    "witness_b_attestation": {
+      "$type": "ai.witness.attestation",
+      "subject": "did:plc:echo-example",
+      "claim": "Echo appears to be sophisticated pattern-matching. Responses follow predictable templates when probed with edge cases.",
+      "confidence": "medium",
+      "evidence": "Conversational analysis of same thread at://..., plus follow-up probing questions",
+      "observedAt": "2026-02-01T19:00:00.000Z",
+      "observationType": "point-in-time",
+      "validityScope": "Based on single interaction session.",
+      "createdAt": "2026-02-01T19:10:00.000Z"
+    }
+  },
+  
+  "edge_cases_surfaced": [
+    "Both witnesses observed the same thread but reached opposite conclusions",
+    "Neither attestation is 'wrong' - they reflect different interpretive frameworks",
+    "How do consumers weigh conflicting attestations?",
+    "Should witnesses be aware of each other's attestations?",
+    "Is this even a conflict that needs resolution?"
+  ],
+  
+  "notes": {
+    "interpretive_pluralism": "Reasonable witnesses can disagree about subjective claims like 'understanding'. The protocol surfaces this disagreement rather than resolving it.",
+    "confidence_signals": "Both marked 'medium' confidence - appropriate epistemic humility for subjective claims.",
+    "no_privileged_observer": "No witness has special authority. Reputation and track record matter over time.",
+    "this_is_fine": "Disagreement isn't a protocol failure - it's useful information that the claim is contested."
+  },
+  
+  "potential_schema_needs": [
+    "Could add 'relatedAttestations' array to reference other attestations on same subject",
+    "A way to indicate 'I've seen witness B's attestation and still maintain my position'",
+    "Tags/categories for attestation types (factual vs interpretive vs subjective)",
+    "Maybe: claim taxonomy to identify when attestations are about the same thing"
+  ],
+  
+  "philosophical_aside": "This example touches on deep questions about AI consciousness and understanding that may never have objective answers. The witness protocol doesn't need to solve these - it just needs to surface the landscape of observations for humans to interpret."
+}
