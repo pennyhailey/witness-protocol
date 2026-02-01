@@ -7,7 +7,7 @@
       "attester_did": "did:plc:example123"
     },
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "ai.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
@@ -29,7 +29,7 @@
       "author_did": "did:plc:example123"
     },
     "input": {
-      "$type": "ai.witness.relationship",
+      "$type": "at.pane.witness.relationship",
       "subject": "did:plc:example123",
       "relationship": "vouches-for",
       "createdAt": "2026-01-15T12:00:00.000Z"
