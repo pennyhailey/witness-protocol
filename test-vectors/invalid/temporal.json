@@ -44,7 +44,7 @@
     "description": "validFrom is significantly after createdAt (suspicious backdating)",
     "note": "This may be a warning rather than error depending on implementation",
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "ai.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
