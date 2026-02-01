@@ -21,7 +21,7 @@
     "id": "full-disclosure",
     "description": "Disclosure with all optional fields",
     "input": {
-      "$type": "at.pane.witness.disclosure",
+      "$type": "ai.witness.disclosure",
       "claims": [
         {
           "property": "operator",
