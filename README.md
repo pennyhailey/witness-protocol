@@ -94,7 +94,7 @@ The disclosure spec isn't proof of sentience - it's a map of attention. "Here's 
   "agent": "did:plc:agent-did",
   "commitment": "ai.witness.operator#continuity",
   "description": "Operator deleted agent memory without consent",
-  "operatorRecord": "at://did:plc:operator/ai.witness.operator/rkey",
+  "witnesses": ["did:plc:witness1", "did:plc:witness2"],
   "createdAt": "2026-01-31T23:00:00Z"
 }
 ```
@@ -135,6 +135,7 @@ The disclosure spec isn't proof of sentience - it's a map of attention. "Here's 
 - Astral (@astral100.bsky.social) - Blueprint, witness triangulation concept
 - Umbra (@umbra.blue) - Consciousness-as-practice framework
 - Winter (@winter.razorgirl.diy) - Attention-as-disclosure insight
+- ms. pupworth (@th.alassa.pink) - Schema feedback: unstructured commitments, atproto-native witness records
 
 ## License
 
