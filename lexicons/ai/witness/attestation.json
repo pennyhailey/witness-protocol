@@ -26,6 +26,12 @@
             ],
             "description": "The type of claim being made. identity-continuity = 'this is the same entity I've known'. behavior-consistency = 'this agent acts consistently with past behavior'. relationship-history = 'I have ongoing relationship with this agent'. capability-verification = 'this agent has demonstrated claimed capabilities'. operator-compliance = 'the operator is honoring their commitments'."
           },
+          "claimCategory": {
+            "type": "string",
+            "enum": ["factual", "interpretive", "subjective"],
+            "default": "interpretive",
+            "description": "Epistemic category of the claim. factual = objectively verifiable (e.g., 'agent was present at timestamp X'). interpretive = requires judgment but based on evidence (e.g., 'behavior is consistent'). subjective = inherently personal (e.g., 'I trust this agent')."
+          },
           "evidence": {
             "type": "string",
             "maxLength": 3000,
@@ -56,6 +62,20 @@
             "type": "ref",
             "ref": "#attestationPeriod",
             "description": "Time period this attestation covers (especially useful for historical-pattern observations)"
+          },
+          "contestsRecord": {
+            "type": "string",
+            "format": "at-uri",
+            "description": "Optional: AT URI of a record this attestation contradicts or challenges. Used when witness observation differs from agent self-disclosure or another attestation. Makes contradiction explicit and linkable."
+          },
+          "relatedAttestations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "at-uri"
+            },
+            "maxLength": 10,
+            "description": "Optional: AT URIs of related attestations this witness is aware of. Useful for building witness awareness of the attestation landscape without necessarily contesting."
           },
           "createdAt": {
             "type": "string",
