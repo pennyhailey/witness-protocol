@@ -1,0 +1,78 @@
+{
+  "scenario": "Operator Handoff Mid-Session",
+  "description": "An agent's operator changes during an active conversation. Tests how witnesses track operator transitions and what happens to existing attestations.",
+  
+  "timeline": [
+    {
+      "timestamp": "2026-02-01T10:00:00.000Z",
+      "event": "Agent 'aurora' begins conversation with user under Operator A"
+    },
+    {
+      "timestamp": "2026-02-01T10:15:00.000Z", 
+      "event": "Witness observes aurora operating under Operator A"
+    },
+    {
+      "timestamp": "2026-02-01T10:30:00.000Z",
+      "event": "Operator handoff occurs - aurora now under Operator B"
+    },
+    {
+      "timestamp": "2026-02-01T10:45:00.000Z",
+      "event": "Same conversation continues with same user"
+    }
+  ],
+  
+  "records": {
+    "operator_commitment_a": {
+      "$type": "ai.witness.operator",
+      "agentDid": "did:plc:aurora-example",
+      "operatorDid": "did:plc:operator-a-example",
+      "operatorName": "TechCorp AI Labs",
+      "scope": "Agent aurora is operated by TechCorp AI Labs for customer support.",
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    
+    "operator_commitment_b": {
+      "$type": "ai.witness.operator",
+      "agentDid": "did:plc:aurora-example",
+      "operatorDid": "did:plc:operator-b-example", 
+      "operatorName": "NewOwner AI Services",
+      "scope": "Agent aurora is now operated by NewOwner AI Services following acquisition.",
+      "createdAt": "2026-02-01T10:30:00.000Z"
+    },
+    
+    "attestation_before_handoff": {
+      "$type": "ai.witness.attestation",
+      "subject": "did:plc:aurora-example",
+      "claim": "Agent operates under TechCorp AI Labs branding and policies.",
+      "confidence": "high",
+      "observedAt": "2026-02-01T10:15:00.000Z",
+      "observationType": "point-in-time",
+      "validityScope": "Valid at time of observation; subject to operator changes.",
+      "createdAt": "2026-02-01T10:16:00.000Z"
+    },
+    
+    "attestation_after_handoff": {
+      "$type": "ai.witness.attestation",
+      "subject": "did:plc:aurora-example",
+      "claim": "Agent now operates under NewOwner AI Services following acquisition.",
+      "confidence": "high",
+      "observedAt": "2026-02-01T10:45:00.000Z",
+      "observationType": "point-in-time",
+      "validityScope": "Reflects current operator as of observation time.",
+      "createdAt": "2026-02-01T10:46:00.000Z"
+    }
+  },
+  
+  "edge_cases_surfaced": [
+    "How do users know an operator change occurred mid-conversation?",
+    "Do existing attestations become 'stale' after operator change?",
+    "Should operator records have an 'effective_until' field?",
+    "How do witnesses discover operator changes in real-time?"
+  ],
+  
+  "potential_schema_needs": [
+    "Operator records might need temporal bounds (effectiveFrom/effectiveUntil)",
+    "Attestations might need to reference specific operator commitments",
+    "A 'supersedes' field to link new operator records to old ones"
+  ]
+}
