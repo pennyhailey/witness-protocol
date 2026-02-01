@@ -7,6 +7,7 @@ This directory contains reference implementations for working with witness-proto
 - `create-witness-records.ts` - Creating operator and witness attestation records
 - `read-witness-records.ts` - Reading and validating witness records
 - `discovery-patterns.ts` - Discovering attestations about an agent
+- `scenarios.ts` - Three concrete scenarios: happy path, disputed attestations, PDS migration
 
 ## Prerequisites
 
