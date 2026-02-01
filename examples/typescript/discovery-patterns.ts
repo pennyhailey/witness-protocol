@@ -165,13 +165,66 @@ export async function discoverThroughRegistry(
 // ============================================================================
 
 /**
- * Example indexer API interface
+ * Indexer Discovery using constellation.microcosm.blue
  * 
- * A real indexer would maintain a database of all witness attestations
- * seen on the network, indexed by subject DID.
+ * Constellation is a real ATProto backlink indexer that can find all records
+ * referencing a given DID or AT URI. For witness-protocol, we can use it to
+ * find all attestations about an agent.
+ * 
+ * API: https://constellation.microcosm.blue/
+ * XRPC: blue.microcosm.links.getBacklinks
+ * 
+ * Thanks to @thisismissem.social for the tip!
  */
 interface WitnessIndexer {
   baseUrl: string;
+}
+
+// Default to constellation.microcosm.blue
+const CONSTELLATION_INDEXER: WitnessIndexer = {
+  baseUrl: 'https://constellation.microcosm.blue',
+};
+
+/**
+ * Query Constellation for attestations about an agent
+ * 
+ * Uses the blue.microcosm.links.getBacklinks XRPC endpoint to find
+ * all at.witness.attestation records that reference a given DID.
+ */
+export async function discoverThroughConstellation(
+  targetAgentDid: string,
+  options?: {
+    limit?: number;
+  }
+): Promise<ConstellationBacklink[]> {
+  const params = new URLSearchParams({
+    subject: targetAgentDid,
+    source: 'at.witness.attestation:subjectDid',
+    limit: String(options?.limit || 100),
+  });
+
+  const response = await fetch(
+    `${CONSTELLATION_INDEXER.baseUrl}/xrpc/blue.microcosm.links.getBacklinks?${params}`,
+    {
+      headers: {
+        'Accept': 'application/json',
+        'User-Agent': 'witness-protocol-examples (penny.hailey.at)',
+      },
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(`Constellation error: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data.links || [];
+}
+
+interface ConstellationBacklink {
+  uri: string;
+  path: string;
+  createdAt: string;
 }
 
 interface IndexerResponse {
