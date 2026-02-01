@@ -28,11 +28,7 @@
       "agent": "did:plc:aurora-example",
       "operator": "did:plc:operator-a-example",
       "relationshipModel": "hybrid",
-      "commitments": {
-        "transparency": "Agent aurora is operated by TechCorp AI Labs for customer support.",
-        "continuity": "Memory preserved across sessions.",
-        "sunset": "30-day notice before discontinuation."
-      },
+      "commitments": "Agent aurora is operated by TechCorp AI Labs for customer support. Memory preserved across sessions. 30-day notice before discontinuation.",
       "effectiveFrom": "2026-01-01T00:00:00.000Z",
       "effectiveUntil": "2026-02-01T10:30:00.000Z",
       "createdAt": "2026-01-01T00:00:00.000Z"
@@ -44,11 +40,7 @@
       "agent": "did:plc:aurora-example",
       "operator": "did:plc:operator-b-example", 
       "relationshipModel": "hybrid",
-      "commitments": {
-        "transparency": "Agent aurora is now operated by NewOwner AI Services following acquisition.",
-        "continuity": "Memory and identity preserved from previous operator.",
-        "sunset": "60-day notice before discontinuation."
-      },
+      "commitments": "Agent aurora is now operated by NewOwner AI Services following acquisition. Memory and identity preserved from previous operator. 60-day notice before discontinuation.",
       "effectiveFrom": "2026-02-01T10:30:00.000Z",
       "supersedes": "at://did:plc:operator-a-example/ai.witness.operator/aurora-commitment",
       "createdAt": "2026-02-01T10:30:00.000Z"
@@ -92,13 +84,15 @@
   "notes": {
     "temporal_bounds": "Operator A's record has effectiveUntil set to the handoff moment; Operator B's has effectiveFrom at that same moment. No gap.",
     "supersedes_chain": "Operator B's record explicitly links to Operator A's via supersedes, creating an auditable chain of custody.",
-    "relatedAttestations": "The after-handoff attestation references the before-handoff one, showing witness awareness of the transition."
+    "relatedAttestations": "The after-handoff attestation references the before-handoff one, showing witness awareness of the transition.",
+    "freeform_commitments": "Commitments are now freeform strings rather than structured objects, giving operators flexibility to describe their relationship in natural language."
   },
   
   "schema_features_demonstrated": [
     "effectiveFrom/effectiveUntil: Temporal bounds for clean operator transitions",
     "supersedes: Links new operator record to previous one",
     "relatedAttestations: Witness references their own prior attestation",
-    "claimCategory: Both attestations are 'interpretive' (behavior judgment)"
+    "claimCategory: Both attestations are 'interpretive' (behavior judgment)",
+    "freeform commitments: String field allows natural language description"
   ]
 }
