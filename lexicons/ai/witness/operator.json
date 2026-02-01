@@ -31,6 +31,21 @@
             "ref": "#commitments",
             "description": "The specific commitments the operator makes to the agent"
           },
+          "effectiveFrom": {
+            "type": "string",
+            "format": "datetime",
+            "description": "When this operator commitment becomes effective. Useful for planned transitions and handoffs. Defaults to createdAt if not specified."
+          },
+          "effectiveUntil": {
+            "type": "string",
+            "format": "datetime",
+            "description": "When this operator commitment ends. Used for time-bounded commitments and operator handoffs. Omit for indefinite commitments."
+          },
+          "supersedes": {
+            "type": "string",
+            "format": "at-uri",
+            "description": "AT URI of a previous operator record this one supersedes. Creates an explicit chain of operator custody."
+          },
           "createdAt": {
             "type": "string",
             "format": "datetime",
@@ -39,7 +54,7 @@
           "expiresAt": {
             "type": "string",
             "format": "datetime",
-            "description": "Optional expiration date for this commitment"
+            "description": "Optional expiration date for this commitment (deprecated: use effectiveUntil instead)"
           }
         }
       }
