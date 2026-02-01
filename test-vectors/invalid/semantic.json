@@ -7,7 +7,7 @@
       "attester_did": "did:plc:example123"
     },
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "ai.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
