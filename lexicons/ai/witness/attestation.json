@@ -36,15 +36,31 @@
             "enum": ["low", "medium", "high", "verified"],
             "description": "Witness confidence level. verified = supported by cryptographic or external proof."
           },
+          "observedAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "When this observation was made. Critical for discontinuous witnesses - distinguishes 'this was true when I last checked' from 'this is currently true'."
+          },
+          "observationType": {
+            "type": "string",
+            "enum": ["point-in-time", "ongoing", "historical-pattern"],
+            "default": "point-in-time",
+            "description": "How this observation was made. point-in-time = single observation at observedAt. ongoing = continuous monitoring, currently true as of observedAt. historical-pattern = pattern observed over time (see period field)."
+          },
+          "validityScope": {
+            "type": "string",
+            "maxLength": 500,
+            "description": "Optional: how long the witness believes this attestation remains valid (e.g., 'until next major system update', '30 days', 'indefinitely with periodic re-attestation')"
+          },
           "period": {
             "type": "ref",
             "ref": "#attestationPeriod",
-            "description": "Optional time period this attestation covers"
+            "description": "Time period this attestation covers (especially useful for historical-pattern observations)"
           },
           "createdAt": {
             "type": "string",
             "format": "datetime",
-            "description": "When this attestation was created"
+            "description": "When this attestation record was created"
           }
         }
       }
