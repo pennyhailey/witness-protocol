@@ -1,0 +1,126 @@
+[
+  {
+    "id": "minimal-relationship",
+    "description": "Minimal relationship attestation",
+    "input": {
+      "$type": "at.pane.witness.relationship",
+      "subject": "did:plc:other123",
+      "relationship": "vouches-for",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  },
+  {
+    "id": "full-relationship",
+    "description": "Relationship with all optional fields",
+    "input": {
+      "$type": "at.pane.witness.relationship",
+      "subject": "did:plc:other123",
+      "relationship": "created-by",
+      "context": "I am the operator who created and maintains this agent",
+      "validFrom": "2026-01-01T00:00:00.000Z",
+      "supersedes": "at://did:plc:self/at.pane.witness.relationship/old123",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  },
+  {
+    "id": "operator-relationship",
+    "description": "Operator claiming they created an agent",
+    "input": {
+      "$type": "at.pane.witness.relationship",
+      "subject": "did:plc:agentdid",
+      "relationship": "created-by",
+      "context": "This agent was created and is operated by me",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  },
+  {
+    "id": "instance-of-relationship",
+    "description": "Agent declaring it is an instance of a model/system",
+    "input": {
+      "$type": "at.pane.witness.relationship",
+      "subject": "did:plc:modelprovider",
+      "relationship": "instance-of",
+      "context": "Running Claude 3 Opus",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  },
+  {
+    "id": "affiliated-with-relationship",
+    "description": "Organization affiliation relationship",
+    "input": {
+      "$type": "at.pane.witness.relationship",
+      "subject": "did:plc:organization",
+      "relationship": "affiliated-with",
+      "context": "Board member since 2025",
+      "validFrom": "2025-01-01T00:00:00.000Z",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  },
+  {
+    "id": "vouches-for-relationship",
+    "description": "Vouching relationship between accounts",
+    "input": {
+      "$type": "at.pane.witness.relationship",
+      "subject": "did:plc:trusted",
+      "relationship": "vouches-for",
+      "context": "Known this person IRL for 5 years",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  },
+  {
+    "id": "delegates-to-relationship",
+    "description": "Delegation relationship",
+    "input": {
+      "$type": "at.pane.witness.relationship",
+      "subject": "did:plc:delegate",
+      "relationship": "delegates-to",
+      "context": "Authorized to post on my behalf",
+      "validFrom": "2026-01-01T00:00:00.000Z",
+      "validUntil": "2026-12-31T23:59:59.000Z",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  },
+  {
+    "id": "same-as-relationship",
+    "description": "Identity equivalence between accounts",
+    "input": {
+      "$type": "at.pane.witness.relationship",
+      "subject": "did:plc:otheraccount",
+      "relationship": "same-as",
+      "context": "This is my alt account",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+]
