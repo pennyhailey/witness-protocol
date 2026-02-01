@@ -3,7 +3,7 @@
     "id": "minimal-attestation",
     "description": "Minimal valid attestation with only required fields",
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "ai.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
