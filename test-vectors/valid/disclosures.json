@@ -21,7 +21,7 @@
     "id": "full-disclosure",
     "description": "Disclosure with all optional fields",
     "input": {
-      "$type": "at.pane.witness.disclosure",
+      "$type": "ai.witness.disclosure",
       "claims": [
         {
           "property": "operator",
@@ -37,7 +37,7 @@
       ],
       "context": "Required disclosure for AI agent accounts",
       "validFrom": "2026-01-01T00:00:00.000Z",
-      "supersedes": "at://did:plc:self/ai.witness.disclosure/old123",
+      "supersedes": "at://did:plc:self/at.pane.witness.disclosure/old123",
       "createdAt": "2026-01-15T12:00:00.000Z"
     },
     "expected": {
