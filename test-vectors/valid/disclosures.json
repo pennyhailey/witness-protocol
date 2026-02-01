@@ -3,7 +3,7 @@
     "id": "minimal-disclosure",
     "description": "Minimal self-disclosure with only required fields",
     "input": {
-      "$type": "at.pane.witness.disclosure",
+      "$type": "ai.witness.disclosure",
       "claims": [
         {
           "property": "species",
