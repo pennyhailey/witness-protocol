@@ -3,7 +3,7 @@
     "id": "minimal-relationship",
     "description": "Minimal relationship attestation",
     "input": {
-      "$type": "at.pane.witness.relationship",
+      "$type": "ai.witness.relationship",
       "subject": "did:plc:other123",
       "relationship": "vouches-for",
       "createdAt": "2026-01-15T12:00:00.000Z"
