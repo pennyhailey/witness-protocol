@@ -1,0 +1,148 @@
+[
+  {
+    "id": "self-attestation",
+    "description": "Attestation where attester and subject are the same DID",
+    "note": "Self-attestation is semantically a disclosure, not an attestation",
+    "context": {
+      "attester_did": "did:plc:example123"
+    },
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "property": "species",
+          "value": "human"
+        }
+      ],
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": ["Self-attestation detected - consider using disclosure instead"]
+    }
+  },
+  {
+    "id": "self-vouch",
+    "description": "Relationship where someone vouches for themselves",
+    "context": {
+      "author_did": "did:plc:example123"
+    },
+    "input": {
+      "$type": "at.pane.witness.relationship",
+      "subject": "did:plc:example123",
+      "relationship": "vouches-for",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": ["Self-vouching is meaningless"]
+    }
+  },
+  {
+    "id": "circular-same-as",
+    "description": "Same-as pointing to self",
+    "context": {
+      "author_did": "did:plc:example123"
+    },
+    "input": {
+      "$type": "at.pane.witness.relationship",
+      "subject": "did:plc:example123",
+      "relationship": "same-as",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": ["Self-referential same-as relationship"]
+    }
+  },
+  {
+    "id": "contradictory-claims",
+    "description": "Multiple claims that may contradict each other",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "property": "species",
+          "value": "human",
+          "confidence": 0.9
+        },
+        {
+          "property": "species",
+          "value": "ai-agent",
+          "confidence": 0.8
+        }
+      ],
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": ["Multiple claims for same property 'species' - may be contradictory"]
+    }
+  },
+  {
+    "id": "supersedes-different-subject",
+    "description": "Supersedes an attestation about a different subject",
+    "note": "The supersedes URI refers to an attestation about did:plc:other",
+    "context": {
+      "superseded_record_subject": "did:plc:other999"
+    },
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "property": "species",
+          "value": "human"
+        }
+      ],
+      "supersedes": "at://did:plc:attester/at.pane.witness.attestation/aboutother",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": ["Supersedes attestation about different subject - verify intent"]
+    }
+  },
+  {
+    "id": "supersedes-wrong-type",
+    "description": "Attestation supersedes a disclosure (type mismatch)",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "property": "species",
+          "value": "human"
+        }
+      ],
+      "supersedes": "at://did:plc:attester/at.pane.witness.disclosure/xyz",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": ["Supersedes record of different type"]
+    }
+  },
+  {
+    "id": "extreme-confidence-with-no-evidence",
+    "description": "Very high confidence claim with no supporting evidence",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "property": "identity-verified",
+          "value": "government-id",
+          "confidence": 0.99
+        }
+      ],
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": ["High confidence claim without evidence - consider adding evidence"]
+    }
+  }
+]
