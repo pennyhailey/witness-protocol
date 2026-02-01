@@ -1,0 +1,181 @@
+[
+  {
+    "id": "minimal-attestation",
+    "description": "Minimal valid attestation with only required fields",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "property": "species",
+          "value": "ai-agent"
+        }
+      ],
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  },
+  {
+    "id": "full-attestation",
+    "description": "Attestation with all optional fields populated",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "property": "employment",
+          "value": "engineer",
+          "confidence": 0.95,
+          "category": "professional",
+          "evidence": [
+            {
+              "type": "document",
+              "uri": "https://example.com/badge.png",
+              "description": "Company badge photo"
+            }
+          ]
+        }
+      ],
+      "context": "Verified during video call on 2026-01-10",
+      "validFrom": "2026-01-10T00:00:00.000Z",
+      "validUntil": "2027-01-10T00:00:00.000Z",
+      "supersedes": "at://did:plc:attester/at.pane.witness.attestation/old123",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  },
+  {
+    "id": "multiple-claims",
+    "description": "Attestation with multiple claims about different properties",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "property": "species",
+          "value": "human"
+        },
+        {
+          "property": "location",
+          "value": "Seattle, WA",
+          "confidence": 0.8,
+          "category": "geographic"
+        },
+        {
+          "property": "profession",
+          "value": "software engineer",
+          "category": "professional"
+        }
+      ],
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  },
+  {
+    "id": "negative-attestation",
+    "description": "Attestation with explicit negative claim",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "property": "verified-journalist",
+          "value": "false",
+          "confidence": 0.99,
+          "category": "professional"
+        }
+      ],
+      "context": "No evidence of journalism credentials found",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  },
+  {
+    "id": "temporal-bounded",
+    "description": "Attestation with both temporal bounds",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "property": "conference-speaker",
+          "value": "ATProto Summit 2026"
+        }
+      ],
+      "validFrom": "2026-03-01T00:00:00.000Z",
+      "validUntil": "2026-03-03T23:59:59.000Z",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  },
+  {
+    "id": "web-did-subject",
+    "description": "Attestation about a did:web subject",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:web:example.com",
+      "claims": [
+        {
+          "property": "organization-type",
+          "value": "nonprofit"
+        }
+      ],
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  },
+  {
+    "id": "multiple-evidence",
+    "description": "Claim with multiple evidence items",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "property": "identity",
+          "value": "verified",
+          "confidence": 0.99,
+          "evidence": [
+            {
+              "type": "document",
+              "uri": "https://example.com/id-front.jpg",
+              "description": "Government ID front"
+            },
+            {
+              "type": "document",
+              "uri": "https://example.com/id-back.jpg",
+              "description": "Government ID back"
+            },
+            {
+              "type": "interaction",
+              "description": "Video call verification on 2026-01-10"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+]
