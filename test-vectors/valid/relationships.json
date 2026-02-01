@@ -17,7 +17,7 @@
     "id": "full-relationship",
     "description": "Relationship with all optional fields",
     "input": {
-      "$type": "at.pane.witness.relationship",
+      "$type": "ai.witness.relationship",
       "subject": "did:plc:other123",
       "relationship": "created-by",
       "context": "I am the operator who created and maintains this agent",
