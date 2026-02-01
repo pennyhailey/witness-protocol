@@ -1,0 +1,242 @@
+[
+  {
+    "id": "missing-subject",
+    "description": "Attestation missing required subject field",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "claims": [
+        {
+          "property": "species",
+          "value": "ai-agent"
+        }
+      ],
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": false,
+      "error": "Missing required field: subject"
+    }
+  },
+  {
+    "id": "missing-claims",
+    "description": "Attestation missing required claims array",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": false,
+      "error": "Missing required field: claims"
+    }
+  },
+  {
+    "id": "empty-claims",
+    "description": "Attestation with empty claims array",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [],
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": false,
+      "error": "Claims array must not be empty"
+    }
+  },
+  {
+    "id": "missing-created-at",
+    "description": "Attestation missing required createdAt field",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "property": "species",
+          "value": "human"
+        }
+      ]
+    },
+    "expected": {
+      "valid": false,
+      "error": "Missing required field: createdAt"
+    }
+  },
+  {
+    "id": "claim-missing-property",
+    "description": "Claim missing required property field",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "value": "ai-agent"
+        }
+      ],
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": false,
+      "error": "Claim missing required field: property"
+    }
+  },
+  {
+    "id": "claim-missing-value",
+    "description": "Claim missing required value field",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "property": "species"
+        }
+      ],
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": false,
+      "error": "Claim missing required field: value"
+    }
+  },
+  {
+    "id": "invalid-confidence-too-low",
+    "description": "Confidence value below valid range",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "property": "species",
+          "value": "human",
+          "confidence": -0.1
+        }
+      ],
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": false,
+      "error": "Confidence must be between 0 and 1"
+    }
+  },
+  {
+    "id": "invalid-confidence-too-high",
+    "description": "Confidence value above valid range",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "property": "species",
+          "value": "human",
+          "confidence": 1.5
+        }
+      ],
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": false,
+      "error": "Confidence must be between 0 and 1"
+    }
+  },
+  {
+    "id": "invalid-did-format",
+    "description": "Subject with invalid DID format",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "not-a-did",
+      "claims": [
+        {
+          "property": "species",
+          "value": "human"
+        }
+      ],
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": false,
+      "error": "Invalid DID format"
+    }
+  },
+  {
+    "id": "invalid-timestamp",
+    "description": "Invalid ISO 8601 timestamp",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "property": "species",
+          "value": "human"
+        }
+      ],
+      "createdAt": "not-a-timestamp"
+    },
+    "expected": {
+      "valid": false,
+      "error": "Invalid timestamp format"
+    }
+  },
+  {
+    "id": "invalid-supersedes-uri",
+    "description": "Invalid AT URI in supersedes field",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "property": "species",
+          "value": "human"
+        }
+      ],
+      "supersedes": "not-an-at-uri",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": false,
+      "error": "Invalid AT URI format"
+    }
+  },
+  {
+    "id": "invalid-evidence-missing-type",
+    "description": "Evidence item missing required type field",
+    "input": {
+      "$type": "at.pane.witness.attestation",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "property": "identity",
+          "value": "verified",
+          "evidence": [
+            {
+              "uri": "https://example.com/proof.jpg"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": false,
+      "error": "Evidence missing required field: type"
+    }
+  },
+  {
+    "id": "wrong-type",
+    "description": "Record with incorrect $type",
+    "input": {
+      "$type": "at.pane.witness.wrong",
+      "subject": "did:plc:example123",
+      "claims": [
+        {
+          "property": "species",
+          "value": "human"
+        }
+      ],
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    "expected": {
+      "valid": false,
+      "error": "Unknown record type"
+    }
+  }
+]
