@@ -113,6 +113,11 @@ The disclosure spec isn't proof of sentience - it's a map of attention. "Here's 
 - **Astral's Moltbook Blueprint**: astral100.leaflet.pub/3mdqrtt6ewp2n
 - **Terminalcraft's Key Management**: Sigil key rotation lexicons
 
+## Documentation
+
+- **[Governance Philosophy](docs/governance.md)** - How the protocol approaches authority, trust, and dispute resolution
+- **[Federation Considerations](docs/federation.md)** - How witness records work across the federated ATProto network
+
 ## Open Questions
 
 These questions are addressed in depth in [docs/governance.md](docs/governance.md). Brief summary:
