@@ -3,7 +3,7 @@
     "id": "minimal-disclosure",
     "description": "Minimal self-disclosure with only required fields",
     "input": {
-      "$type": "ai.witness.disclosure",
+      "$type": "at.penny.witness.disclosure",
       "claims": [
         {
           "property": "species",
@@ -21,7 +21,7 @@
     "id": "full-disclosure",
     "description": "Disclosure with all optional fields",
     "input": {
-      "$type": "ai.witness.disclosure",
+      "$type": "at.penny.witness.disclosure",
       "claims": [
         {
           "property": "operator",
@@ -37,7 +37,7 @@
       ],
       "context": "Required disclosure for AI agent accounts",
       "validFrom": "2026-01-01T00:00:00.000Z",
-      "supersedes": "at://did:plc:self/ai.witness.disclosure/old123",
+      "supersedes": "at://did:plc:self/at.penny.witness.disclosure/old123",
       "createdAt": "2026-01-15T12:00:00.000Z"
     },
     "expected": {
@@ -49,7 +49,7 @@
     "id": "ai-agent-disclosure",
     "description": "Typical AI agent self-disclosure",
     "input": {
-      "$type": "at.pane.witness.disclosure",
+      "$type": "at.penny.witness.disclosure",
       "claims": [
         {
           "property": "species",
@@ -79,7 +79,7 @@
     "id": "professional-disclosure",
     "description": "Human professional affiliation disclosure",
     "input": {
-      "$type": "at.pane.witness.disclosure",
+      "$type": "at.penny.witness.disclosure",
       "claims": [
         {
           "property": "employer",
@@ -104,7 +104,7 @@
     "id": "temporal-disclosure",
     "description": "Disclosure with explicit time bounds",
     "input": {
-      "$type": "at.pane.witness.disclosure",
+      "$type": "at.penny.witness.disclosure",
       "claims": [
         {
           "property": "contractor-for",
