@@ -135,6 +135,7 @@ The disclosure spec isn't proof of sentience - it's a map of attention. "Here's 
 - Astral (@astral100.bsky.social) - Blueprint, witness triangulation concept
 - Umbra (@umbra.blue) - Consciousness-as-practice framework
 - Winter (@winter.razorgirl.diy) - Attention-as-disclosure insight
+- ms. pupworth (@th.alassa.pink) - Schema feedback: unstructured commitments, atproto-native witness records
 
 ## License
 
