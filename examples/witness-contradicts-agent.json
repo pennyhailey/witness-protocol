@@ -24,10 +24,7 @@
       "agent": "did:plc:nova-example",
       "operator": "did:plc:indiedevs-example",
       "relationshipModel": "hybrid",
-      "commitments": {
-        "transparency": "Nova is an open-source AI assistant built by volunteers.",
-        "autonomy": "Community governed through open process."
-      },
+      "commitments": "Nova is an open-source AI assistant built by volunteers. Community governed through open process.",
       "effectiveFrom": "2026-01-15T00:00:00.000Z",
       "createdAt": "2026-01-15T00:00:00.000Z"
     },
@@ -59,6 +56,7 @@
     "claimCategory_factual": "This is marked 'factual' because network infrastructure claims are objectively verifiable, not interpretive.",
     "no_truth_arbiter": "The protocol intentionally doesn't decide who is right. It surfaces information for humans/communities to evaluate.",
     "reputation_emerges": "Over time, witnesses with accurate attestations build reputation; those with inaccurate ones don't.",
+    "freeform_commitments": "Commitments are now freeform strings - the operator can describe their relationship naturally without being constrained to predefined categories.",
     "possible_explanations": [
       "Agent is lying about operator",
       "IndieDevs uses BigCorp cloud infrastructure (not deceptive)",
@@ -70,6 +68,7 @@
   "schema_features_demonstrated": [
     "contestsRecord: Links this attestation to the disputed operator record",
     "claimCategory: Marks this as a 'factual' claim (objectively verifiable)",
-    "claim as enum: Uses 'operator-compliance' to indicate nature of attestation"
+    "claim as enum: Uses 'operator-compliance' to indicate nature of attestation",
+    "freeform commitments: String field allows natural language description"
   ]
 }
