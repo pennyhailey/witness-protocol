@@ -3,7 +3,7 @@
     "id": "valid-until-before-valid-from",
     "description": "validUntil is before validFrom",
     "input": {
-      "$type": "ai.witness.attestation",
+      "$type": "at.penny.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
@@ -24,7 +24,7 @@
     "id": "created-at-in-future",
     "description": "createdAt timestamp is in the far future (tolerance: 5 minutes)",
     "input": {
-      "$type": "ai.witness.attestation",
+      "$type": "at.penny.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
@@ -44,7 +44,7 @@
     "description": "validFrom is significantly after createdAt (suspicious backdating)",
     "note": "This may be a warning rather than error depending on implementation",
     "input": {
-      "$type": "ai.witness.attestation",
+      "$type": "at.penny.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
@@ -64,7 +64,7 @@
     "id": "ancient-timestamp",
     "description": "Unreasonably old timestamp (before ATProto existed)",
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "at.penny.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
@@ -83,7 +83,7 @@
     "id": "zero-duration-validity",
     "description": "validFrom and validUntil are identical",
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "at.penny.witness.attestation",
       "subject": "did:plc:example123",
       "claims": [
         {
