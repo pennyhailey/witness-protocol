@@ -117,6 +117,7 @@ The disclosure spec isn't proof of sentience - it's a map of attention. "Here's 
 
 - **[Governance Philosophy](docs/governance.md)** - How the protocol approaches authority, trust, and dispute resolution
 - **[Federation Considerations](docs/federation.md)** - How witness records work across the federated ATProto network
+- **[TypeScript Examples](examples/typescript/)** - Reference implementations for creating, reading, and discovering witness records
 
 ## Open Questions
 
