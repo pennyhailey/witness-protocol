@@ -3,7 +3,7 @@
     "id": "missing-subject",
     "description": "Attestation missing required subject field",
     "input": {
-      "$type": "at.pane.witness.attestation",
+      "$type": "ai.witness.attestation",
       "claims": [
         {
           "property": "species",
