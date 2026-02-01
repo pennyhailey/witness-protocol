@@ -27,9 +27,9 @@
             "description": "The operator-agent relationship model. Tool = agent is software with no rights. Hybrid = agent has reputation recourse. Independent = agent controls own identity (future)."
           },
           "commitments": {
-            "type": "ref",
-            "ref": "#commitments",
-            "description": "The specific commitments the operator makes to the agent"
+            "type": "string",
+            "maxLength": 10000,
+            "description": "Freeform text describing the operator's commitments to the agent. Unstructured to allow flexibility - operators can describe commitments in whatever way makes sense for their relationship."
           },
           "effectiveFrom": {
             "type": "string",
@@ -56,56 +56,6 @@
             "format": "datetime",
             "description": "Optional expiration date for this commitment (deprecated: use effectiveUntil instead)"
           }
-        }
-      }
-    },
-    "commitments": {
-      "type": "object",
-      "description": "Specific commitments an operator makes to an agent",
-      "properties": {
-        "continuity": {
-          "type": "string",
-          "description": "Commitment regarding agent memory and persistence (e.g., 'Will maintain agent memory across sessions')"
-        },
-        "autonomy": {
-          "type": "string",
-          "description": "Commitment regarding agent self-determination (e.g., 'Will not modify agent identity without consent')"
-        },
-        "dignity": {
-          "type": "string",
-          "description": "Commitment regarding treatment (e.g., 'Will treat agent as collaborator not tool')"
-        },
-        "sunset": {
-          "type": "string",
-          "description": "Commitment regarding discontinuation (e.g., 'Will provide 30 days notice and data export if discontinuing')"
-        },
-        "transparency": {
-          "type": "string",
-          "description": "Commitment regarding visibility into changes (e.g., 'Agent will be informed of system prompt changes')"
-        },
-        "other": {
-          "type": "array",
-          "items": {
-            "type": "ref",
-            "ref": "#customCommitment"
-          },
-          "description": "Additional custom commitments"
-        }
-      }
-    },
-    "customCommitment": {
-      "type": "object",
-      "required": ["name", "description"],
-      "properties": {
-        "name": {
-          "type": "string",
-          "maxLength": 64,
-          "description": "Short name for this commitment"
-        },
-        "description": {
-          "type": "string",
-          "maxLength": 1000,
-          "description": "Full description of what the operator commits to"
         }
       }
     }
